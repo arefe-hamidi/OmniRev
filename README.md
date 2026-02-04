@@ -1,38 +1,61 @@
-# OminRev
+# OmniRev
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+A [Next.js](https://nextjs.org) application with internationalization, authentication (NextAuth + Azure AD B2C), dashboard, and API proxy.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js
+- [pnpm](https://pnpm.io/) (package manager)
+
+### Install & Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Install dependencies
+pnpm install
+
+# Run development server (http://127.0.0.1:3000)
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy or create a `.env` file with the required variables. See [src/docs/env.md](src/docs/env.md) for the full list (Auth, API, and app URL settings).
+
+## Scripts
+
+| Command          | Description                    |
+|------------------|--------------------------------|
+| `pnpm dev`       | Start dev server (127.0.0.1)   |
+| `pnpm build`     | Production build               |
+| `pnpm start`     | Start production server        |
+| `pnpm lint`      | Run ESLint                     |
+| `pnpm format`    | Format with Prettier           |
+| `pnpm format:check` | Check formatting            |
+| `pnpm test`      | Run Vitest (watch)             |
+| `pnpm test:run`  | Run Vitest once                |
+
+## Project Structure
+
+- **`src/app/`** – Next.js App Router: `[locale]` (auth, dashboard), `api/proxy`
+- **`src/Components/`** – Shared UI: Entity (pagination, table, search, theme, locale), Layout, Shadcn, Error
+- **`src/Main/`** – Feature modules: Auth (Login, SignUp), Dashboard (Contacts, Home)
+- **`src/lib/`** – API client, auth, config, hooks, query, routes
+- **`src/docs/`** – Docs and guidelines (env, i18n, testing, etc.)
+
+## Tech Stack
+
+- **Framework:** Next.js 16, React 19
+- **Auth:** NextAuth, Azure AD B2C
+- **Data:** TanStack Query (React Query)
+- **UI:** Radix UI, Tailwind CSS, Shadcn-style components, Recharts, Sonner
+- **State:** Zustand
+- **Testing:** Vitest
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js Deployment](https://nextjs.org/docs/app/building-your-application/deploying)
