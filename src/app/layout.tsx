@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
 import "./globals.css";
 import "@/Components/Entity/Theme/styles.css";
@@ -7,16 +6,7 @@ import ThemeInit from "@/Components/Entity/Theme/Components/ThemeInit";
 import { getLayoutTheme } from "@/Components/Entity/Theme/utils.server";
 import QueryProvider from "@/lib/query/QueryProvider";
 import { Toaster } from "@/Components/Shadcn/sonner";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { roboto } from "@/lib/configs/fonts";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -34,7 +24,7 @@ export default async function RootLayout({
   return (
     <html className={theme} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex h-screen flex-col overflow-hidden antialiased`}
+        className={`${roboto.variable} font-sans flex h-screen flex-col overflow-hidden antialiased`}
       >
         <ThemeInit />
         <div className="flex min-h-0 flex-1 flex-col overflow-hidden">
